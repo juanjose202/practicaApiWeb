@@ -11,7 +11,6 @@ Cedula: 1001560633
 
 crear interfaz principal
 crear objetos
-integrar base de datos postman
 borrar y eliminar objetos
 poner comentarios
 revisar ortografia

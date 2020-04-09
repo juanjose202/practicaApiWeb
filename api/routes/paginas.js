@@ -1,12 +1,20 @@
 const express = require("express")
 const router = express.Router()
 
-const { validarPagina, guardarPagina } = require(`../controller/paginas`);
+const { validarPagina, guardarPagina, consultarPagina } = require(`../controller/paginas`);
 
 
 //obtener todas las paginas
 router.get('/paginas', (req, res) => {
-    res.send(`endpoint GET de paginas`)
+    consultarPagina().then(respuestaDB => {
+        
+        let registros =  respuestaDB.rows;
+        res.send({ok:true,info:registros,mensaje:"paginas Consultadas"})
+        
+    }).catch(error => {
+        res.send(error)
+    })
+
 });
 
 
@@ -15,11 +23,14 @@ router.post('/paginas', (req, res) => {
 
     try {
 
-        validarPagina(info_pagina);
         let info_pagina = req.body;
-        console.log(info_pagina);
-        res.send("endpoint POST de paginas");
-        
+        validarPagina(info_pagina);
+        guardarPagina(info_pagina).then(respuestaDB => {
+            res.send({ ok: true, mensaje: "Pagina Guardada", info: info_pagina });
+
+        }).catch(error => {
+            res.send(error)
+        })
 
 
     } catch (error) {
@@ -27,9 +38,5 @@ router.post('/paginas', (req, res) => {
     }
 
 });
-
-
-
-
 
 module.exports = router;
