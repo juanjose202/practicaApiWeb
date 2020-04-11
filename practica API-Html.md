@@ -8,9 +8,9 @@ Los datos a ingresar son url(obligatorio), nombre(obligatorio), descripción(opc
 
 ### Items a calificar
 
-1. Creación del API y conexión con base de datos.
-2. Guardar en la base de datos desde el postman y la página web.
-3. Consultar información desde la base de datos desde el postman y la página web
+1. Creación del API y conexión con base de datos.             lsito 
+2. Guardar en la base de datos desde el postman y la página web. listo postman 
+3. Consultar información desde la base de datos desde el postman y la página web   listo base de datos , y postman 
 
 ### RETOS
 

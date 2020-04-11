@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 
-const { validarPagina, guardarPagina, consultarPagina } = require(`../controller/paginas`);
+const { validarPagina, guardarPagina, consultarPagina,eliminarPagina,actualizarPagina } = require(`../controller/paginas`);
 
 
 //obtener todas las paginas
@@ -38,5 +38,11 @@ router.post('/paginas', (req, res) => {
     }
 
 });
+
+//actualizar una pagina
+router.put('/paginas/:id',actualizarPagina);
+
+//borrar una pagina
+router.delete('/paginas/:id',eliminarPagina);
 
 module.exports = router;

@@ -41,7 +41,7 @@ let guardarPagina = async pagina => {
 
 
 };
-let consultarPagina =  async () => {
+let consultarPagina = async () => {
 
     let servicio = new ServicioPG()
     let sql = "select * from paginas";
@@ -49,5 +49,30 @@ let consultarPagina =  async () => {
     return respuesta;
 };
 
+let actualizarPagina = async (req,res) => {
 
-module.exports = { validarPagina, guardarPagina ,consultarPagina};
+    let servicio = new ServicioPG();
+    
+    let id = req.params.id;
+    let {url,nombre,descripcion} = req.body;
+
+    let sql = `update paginas set url='${url}',nombre='${nombre}',descripcion='${descripcion}' where id =${id}`
+    let respuesta = await servicio.ejecutarSql(sql);
+    res.json(`pagina ${id} actualizada exitosamente`);
+    return respuesta;
+
+}
+
+
+let eliminarPagina = async (req, res) => {
+
+    let servicio = new ServicioPG();
+    let id = req.params.id;
+    let sql = 'delete from paginas where id=' + id;
+    let respuesta = await servicio.ejecutarSql(sql);
+    res.json(`pagina ${id} eliminada exitosamente`)
+    return respuesta;
+}
+
+
+module.exports = { validarPagina, guardarPagina, consultarPagina, eliminarPagina, actualizarPagina };
