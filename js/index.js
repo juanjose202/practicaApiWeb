@@ -1,8 +1,15 @@
 
 
+
+//array de paginas
 let paginas = [];
+
+//pagina temporal para funcion de actualizar
 let paginaTemporal = null
 
+/**
+ * metodo para obtener todas las paginas
+ */
 function obtenerPaginas() {
 
   axios.get("http://localhost:3001/paginas").then((response) => {
@@ -33,6 +40,9 @@ function obtenerPaginas() {
 
 }
 
+/**
+ * metodo para crear una pagina y agregarla a la base de datos
+ */
 function crearPagina() {
 
   let pagina = obtenerValores()
@@ -49,10 +59,12 @@ function crearPagina() {
     });
 
 
-
-
 }
 
+
+/**
+ * metodo que obtiene los valores desde los campos de text llenados por el usuario 
+ */
 function obtenerValores() {
   let url = document.getElementById("link").value
   let nombre = document.getElementById("nombre").value
@@ -63,7 +75,9 @@ function obtenerValores() {
 
 }
 
-
+/**
+ * metodo que limpia los campos una vez que fue creada y agregada la nueva pagina
+ */
 function limpiarForm() {
 
   document.getElementById("link").value = ""
@@ -74,7 +88,10 @@ function limpiarForm() {
 
 }
 
-
+/**
+ * metodo para eliminar una pagina
+ * @param {*} id  id de la pagina en la base de datos
+ */
 function eliminarPagina(id) {
 
   axios.delete(`http://localhost:3001/paginas/${id}`)
@@ -88,6 +105,10 @@ function eliminarPagina(id) {
 
 }
 
+/**
+ * metodo para llenar los campos de texto con los datos de una pagina seleccionada para editar
+ * @param {*} index  id de la pagina en la base de datos
+ */
 function cargarInformacion(index) {
 
   for (let i = 0; i < paginas.length; i++) {
@@ -106,12 +127,16 @@ function cargarInformacion(index) {
   }
 }
 
-function actualizarPagina(){
 
-  let pagina=obtenerValores();
+/**
+ * metodo para actualizar la pagina
+ */
+function actualizarPagina() {
+
+  let pagina = obtenerValores();
 
   console.log(paginaTemporal
-    )
+  )
 
   axios
     .put(`http://localhost:3001/paginas/${paginaTemporal}`, pagina)
@@ -127,7 +152,5 @@ function actualizarPagina(){
 }
 
 
-
-
-
+//llamado de la funcion obtenerPaginas para que cargue todas las paginas cada que se inicie la pagina principal
 obtenerPaginas()

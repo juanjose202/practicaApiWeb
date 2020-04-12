@@ -1,5 +1,10 @@
+
+
+//importar Express y Cors
 const express = require("express")
 const cors = require("cors")
+
+//constante del puerto local usado
 const PUERTO = 3001
 
 var app = express();
@@ -15,7 +20,6 @@ app.get(`/`, (req, res) => {
 });
 
 //importar rutas
-
 const rutas_paginas = require(`./routes/paginas`)
 app.use(rutas_paginas);
 

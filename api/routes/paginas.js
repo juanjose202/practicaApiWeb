@@ -1,6 +1,10 @@
+
+//importar express y usar router
+
 const express = require("express")
 const router = express.Router()
 
+//importar los metodos desde controllers
 const { validarPagina, guardarPagina, consultarPagina,eliminarPagina,actualizarPagina } = require(`../controller/paginas`);
 
 
@@ -42,7 +46,9 @@ router.post('/paginas', (req, res) => {
 //actualizar una pagina
 router.put('/paginas/:id',actualizarPagina);
 
-//borrar una pagina
+//eliminar una pagina
 router.delete('/paginas/:id',eliminarPagina);
 
+
+//exportar router
 module.exports = router;

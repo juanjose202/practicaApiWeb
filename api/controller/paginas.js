@@ -41,6 +41,10 @@ let guardarPagina = async pagina => {
 
 
 };
+
+/**
+ * consultar la base de datos con las paginas
+ */
 let consultarPagina = async () => {
 
     let servicio = new ServicioPG()
@@ -49,6 +53,12 @@ let consultarPagina = async () => {
     return respuesta;
 };
 
+
+/**
+ * actualizar Pagina en la base de datos
+ * @param {*} req 
+ * @param {*} res 
+ */
 let actualizarPagina = async (req,res) => {
 
     let servicio = new ServicioPG();
@@ -64,6 +74,11 @@ let actualizarPagina = async (req,res) => {
 }
 
 
+/**
+ * eliminar pagina de la base de datos
+ * @param {*} req 
+ * @param {*} res 
+ */
 let eliminarPagina = async (req, res) => {
 
     let servicio = new ServicioPG();
@@ -75,4 +90,5 @@ let eliminarPagina = async (req, res) => {
 }
 
 
+//extportar los metodos
 module.exports = { validarPagina, guardarPagina, consultarPagina, eliminarPagina, actualizarPagina };
