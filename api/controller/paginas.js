@@ -48,7 +48,7 @@ let guardarPagina = async pagina => {
 let consultarPagina = async () => {
 
     let servicio = new ServicioPG()
-    let sql = "select * from paginas";
+    let sql = "select * from paginas order by id";
     let respuesta = await servicio.ejecutarSql(sql)
     return respuesta;
 };
